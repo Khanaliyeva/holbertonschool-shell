@@ -1,2 +1,2 @@
 #!/bin/bash
-case ":$PATH:" in *":/action:"*) ;; *) export PATH="$PATH:/action" ;; esac
+echo "$PATH" | tr ':' '\n' | grep '^/' | wc -l
