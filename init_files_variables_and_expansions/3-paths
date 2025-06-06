@@ -1,2 +1,2 @@
 #!/bin/bash
-export PATH="$PATH:/action"
+case ":$PATH:" in *":/action:"*) ;; *) export PATH="$PATH:/action" ;; esac
