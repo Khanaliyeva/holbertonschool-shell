@@ -1,3 +1,11 @@
 #!/usr/bin/env bash
 #4
-pkill -f 4-to_infinity_and_beyond
+#!/usr/bin/env bash
+
+# shellcheck disable=SC2064
+trap 'echo "I am invincible!!!"' SIGTERM
+
+while true; do
+  echo "To infinity and beyond"
+  sleep 2
+done
