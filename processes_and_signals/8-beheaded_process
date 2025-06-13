@@ -2,9 +2,6 @@
 #8
 
 pids=$(ps aux | grep '[7]-highlander' | awk '{print $2}')
-
-if [ -n "$pids" ]; then
-  for pid in $pids; do
-    kill "$pid" 2>/dev/null
-  done
-fi
+for pid in $pids; do
+  kill "$pid" 2>/dev/null
+done
