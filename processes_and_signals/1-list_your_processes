@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#ps: Process status command
+
+#-e: Show processes for all users
+#-o: Custom output format:
+#user: username of process owner
+#pid: process ID
+#ppid: parent process ID
+#tty: terminal (or ? if none)
+#stat: process state
+#start: start time of process
+#time: cumulative CPU time
+#cmd: the command that started the process
+#--forest: shows the hierarchy (tree structure)
+
+ps -eo user,pid,ppid,tty,stat,start,time,cmd --forest
