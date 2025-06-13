@@ -2,14 +2,5 @@
 # list
 
 for file in *; do
-  # Skip if not a file (optional, but safer)
-  [ -f "$file" ] || continue
-
-  # Extract part after first dash
-  name_after_dash="${file#*-}"
-
-  # Only display if dash was present (so name changed)
-  if [ "$name_after_dash" != "$file" ]; then
-    echo "$name_after_dash"
-  fi
+    echo "$file" | cut -d '-' -f2-
 done
