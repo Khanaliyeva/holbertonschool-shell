@@ -1,3 +1,12 @@
 #!/usr/bin/env bash
 #8
-pkill -f 7-highlander
+
+# Find PIDs of 7-highlander processes
+pids=$(ps aux | grep '[7]-highlander' | awk '{print $2}')
+
+# If PIDs found, kill them
+if [ -n "$pids" ]; then
+  for pid in $pids; do
+    kill "$pid" 2>/dev/null
+  done
+fi
