@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2164
+
+PID_FILE="/var/run/myscript.pid"
+
+# Write the script's PID to the file
+echo $$ > "$PID_FILE"
+
+# Handler for SIGTERM
+term_handler() {
+  echo "I hate the kill command"
+  rm -f "$PID_FILE"
+  exit 0
+}
+
+# Handler for SIGINT
+int_handler() {
+  echo "Y U no love me?!"
+}
+
+# Handler for SIGQUIT (and also SIGTERM for cleanup)
+quit_handler() {
+  rm -f "$PID_FILE"
+  exit 0
+}
+
+trap 'term_handler' SIGTERM
+trap 'int_handler' SIGINT
+trap 'quit_handler' SIGQUIT
+
+# Infinite loop printing message every 2 seconds
+while true; do
+  echo "To infinity and beyond"
+  sleep 2
+done
