@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2009
 
-ps -ef | grep "[b]ash" | awk '{print $2}'
+ps -ef | awk '$8 == "bash" && $2 != 1 {print $2}'
